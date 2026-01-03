@@ -1,0 +1,1 @@
+# LegendSMP-webove-stranky
