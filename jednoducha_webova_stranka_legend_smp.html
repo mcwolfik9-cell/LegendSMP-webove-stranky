@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LegendSMP | Minecraft Server</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+    }
+    header {
+      padding: 80px 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      letter-spacing: 4px;
+    }
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.85;
+      margin-top: 10px;
+    }
+    nav {
+      background: rgba(0,0,0,0.6);
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: #00ffd5;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #00ffd5;
+      letter-spacing: 1px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 14px 30px;
+      border-radius: 30px;
+      background: #00ffd5;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 255, 213, 0.6);
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+      background: rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>LegendSMP</h1>
+    <p>Minecraft Survival Multiplayer Server</p>
+    <a class="btn" href="#pripojeni">Připojit se</a>
+  </header>
+
+  <nav>
+    <a href="#about">O serveru</a>
+    <a href="#info">Informace</a>
+    <a href="#rules">Pravidla</a>
+    <a href="#discord">Discord</a>
+  </nav>
+
+  <section id="about">
+    <div class="card">
+      <h2>O LegendSMP</h2>
+      <p>
+        LegendSMP je komunitní Minecraft SMP server zaměřený na zábavu, přežití,
+        spolupráci a budování. Server je určen pro hráče, kteří chtějí férový gameplay,
+        aktivní komunitu a dlouhodobý svět bez resetů.
+      </p>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="info-grid">
+      <div class="card">
+        <h2>Stav serveru</h2>
+        <p id="server-status">Načítání...</p>
+        <p id="player-count"></p>
+      </div>
+      <div class="card">
+        <h2>IP Adresa</h2>
+        <p><strong>legendsmp.mc.hostify.cz</strong></p>
+      </div>
+      <div class="card">
+        <h2>Verze</h2>
+        <p><strong>1.21.8</strong></p>
+      </div>
+      <div class="card">
+        <h2>Herní režim</h2>
+        <p>Survival SMP</p>
+      </div>
+      <div class="card">
+        <h2>Platforma</h2>
+        <p>Java Edition</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <div class="card">
+      <h2>Pravidla serveru</h2>
+      <ul>
+        <li>Zákaz cheatů, hacků a x-ray</li>
+        <li>Žádný grief bez povolení</li>
+        <li>Respektuj ostatní hráče a adminy</li>
+        <li>Zákaz toxického chování</li>
+        <li>Dodržuj pravidla Discordu</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="discord">
+    <div class="card">
+      <h2>Discord Server</h2>
+      <p>
+        Připoj se na náš Discord server, kde najdeš oznámení, podporu,
+        informace o updatech a komunitu hráčů.
+      </p>
+      <p><strong>Název:</strong> LegendSMP</p>
+      <a class="btn" href="#">Připojit se na Discord</a>
+    </div>
+  </section>
+
+  <section id="pripojeni">
+    <div class="card">
+      <h2>Jak se připojit</h2>
+      <ol>
+        <li>Spusť Minecraft Java Edition</li>
+        <li>Zvol verzi <strong>1.21.8</strong></li>
+        <li>Otevři Multiplayer → Přidat server</li>
+        <li>Zadej IP: <strong>legendsmp.mc.hostify.cz</strong></li>
+        <li>Připoj se a hraj!</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 LegendSMP • Minecraft SMP Server
+  </footer>
+
+  <script>
+    fetch("https://api.mcsrvstat.us/2/legendsmp.mc.hostify.cz")
+      .then(res => res.json())
+      .then(data => {
+        const statusEl = document.getElementById("server-status");
+        const playersEl = document.getElementById("player-count");
+
+        if (data.online) {
+          statusEl.innerHTML = "🟢 Online";
+          playersEl.innerHTML = `Hráči online: ${data.players.online} / ${data.players.max}`;
+        } else {
+          statusEl.innerHTML = "🔴 Offline";
+          playersEl.innerHTML = "Server je momentálně nedostupný";
+        }
+      })
+      .catch(() => {
+        document.getElementById("server-status").innerHTML = "⚠️ Nelze načíst stav serveru";
+      });
+  </script>
+</body>
+</html>
